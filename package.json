@@ -1,7 +1,7 @@
 {
   "name": "mclean-resume",
   "version": "0.1.0",
-  "homepage": "https://mcleanka.github.io/mcleanka.github.io",
+  "homepage": "https://mcleanka.github.io/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",

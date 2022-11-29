@@ -9,7 +9,7 @@ export default function Sidebar() {
 	return (
 		<Navbar collapseOnSelect expand='lg' bg='primary' variant='dark' fixed='top' className='sideNav'>
 			<Navbar.Brand className='js-scroll-trigger' href="#page-top">
-				<span className="d-block d-lg-none">Clarence Taylor</span>
+				<span className="d-block d-lg-none">{'Mclean Kasambala'}</span>
 				<span className="d-none d-lg-block">
 					<img
 						className="img-fluid img-profile rounded-circle mx-auto mb-2"

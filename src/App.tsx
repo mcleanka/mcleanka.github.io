@@ -10,6 +10,7 @@ import Skills from './pages/Skills';
 import Awards from './pages/Awards';
 import Interests from './pages/Interests';
 import './App.scss'
+import Repositories from './pages/Repositories';
 
 export default function App() {
 	return (
@@ -26,6 +27,8 @@ export default function App() {
 				<Education />
 				<hr className='m-0' />
 				<Skills />
+				<hr className='m-0' />
+				<Repositories />
 				<hr className='m-0' />
 				<Interests />
 				<hr className='m-0' />

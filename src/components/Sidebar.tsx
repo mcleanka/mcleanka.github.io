@@ -25,6 +25,7 @@ export default function Sidebar() {
 					<Nav.Link className='js-scroll-trigger' href="#experience">Experience</Nav.Link>
 					<Nav.Link className='js-scroll-trigger' href="#education">Education</Nav.Link>
 					<Nav.Link className='js-scroll-trigger' href="#skills">Skills</Nav.Link>
+					<Nav.Link className='js-scroll-trigger' href="#repositories">Repositories</Nav.Link>
 					<Nav.Link className='js-scroll-trigger' href="#interests">Interests</Nav.Link>
 					<Nav.Link className='js-scroll-trigger' href="#awards">Awards</Nav.Link>
 				</Nav>

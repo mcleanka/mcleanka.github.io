@@ -23,7 +23,7 @@ export default function About() {
 					</p>
 					<div className="social-icons">
 						{
-							icons.map((icon) => (<a className="social-icon bg-primary" href="#!">
+							icons.map((icon, key) => (<a className="social-icon bg-primary" href="#!" key={key}>
 								{icon}
 							</a>))
 						}

@@ -1,6 +1,5 @@
 import React from "react";
 import { Card, Col } from "react-bootstrap";
-import { FaCircle } from "react-icons/fa";
 import Moment from "react-moment";
 
 export interface IRepository {
@@ -25,7 +24,6 @@ function RepositoryCard(props: IRepository) {
 				<Card.Subtitle className="mb-2 text-muted">{props.full_name}</Card.Subtitle>
 				<Card.Text>{props.description}</Card.Text>
 				<Card.Link className="text-decoration-none" href="">
-					{/* <small>{<FaCircle />}</small> */}
 					{'Updated: '}
 					<Moment date={props.pushed_at} fromNow />
 				</Card.Link>

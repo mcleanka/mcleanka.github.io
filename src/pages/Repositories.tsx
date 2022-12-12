@@ -10,12 +10,10 @@ const Repositories: FC<{}> = (): ReactElement => {
 
 	const [repositories, setRepositories] = useState<IRepository[]>([])
 
-	const getRepositories = async (): Promise<void> => {
-
-		await http.list(`/users/${username}/repos`).then<void, never>((result) => {
+	const getRepositories = async (): Promise<void> => await http.list(`/users/${username}/repos`)
+		.then<void, never>((result) => {
 			setRepositories(result)
 		})
-	}
 
 	useEffect(() => {
 		getRepositories()
@@ -29,10 +27,7 @@ const Repositories: FC<{}> = (): ReactElement => {
 				<Container className='px-0'>
 					<Row>
 						{
-							repositories?.map((repository, key) => {
-
-								return <RepositoryCard {...repository} key={key} />
-							})
+							repositories?.map((repository, key: number) => <RepositoryCard {...repository} key={key} />)
 						}
 					</Row>
 				</Container>

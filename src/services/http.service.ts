@@ -11,11 +11,11 @@ const instance: AxiosInstance = axios.create({
 instance.interceptors.response.use(
 	(res) => res,
 	(error: AxiosError) => {
-		const { data, status } = error.response!;
+		const { data, status, config } = error.response!;
 
 		switch (status) {
 			case 400:
-				console.error(data);
+				console.error(data, config);
 				break;
 
 			case 401:

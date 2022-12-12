@@ -1,31 +1,20 @@
-import { Octokit } from 'octokit'
 import React, { useEffect, useState, FC, ReactElement } from 'react'
 import { Container, Row } from 'react-bootstrap'
-import RepositoryCard, { IRepository } from '../components/RepositoryCard'
+import RepositoryCard from '../components/RepositoryCard'
+import { repos as http } from '../services/index.service'
+import { IRepository } from '../types/Repository.type'
 
-const token: string | undefined | null = process.env.REACT_APP_API_KEY
-
-const octokit: Octokit = new Octokit({
-	auth: token
-})
-
+const username = process.env.REACT_APP_API_USERNAME;
 
 const Repositories: FC<{}> = (): ReactElement => {
-	const [repositories, setRepositories] = useState<Array<IRepository>>([])
+
+	const [repositories, setRepositories] = useState<IRepository[]>([])
 
 	const getRepositories = async (): Promise<void> => {
 
-		try {
-			await octokit.request<any>("GET /users/{owner}/{repos}", {
-				owner: "mcleanka",
-				repos: "repos",
-			}).then((response) => response.data)
-				.then((data: any) => {
-					setRepositories(data)
-				})
-		} catch (error: any) {
-			console.log(`Error! Status: ${error.status}. Message: ${error.response.data.message}`)
-		}
+		await http.list(`/users/${username}/repos`).then<void, never>((result) => {
+			setRepositories(result)
+		})
 	}
 
 	useEffect(() => {

@@ -1,15 +1,7 @@
 import React from "react";
 import { Card, Col } from "react-bootstrap";
 import Moment from "react-moment";
-
-export interface IRepository {
-	name: string;
-	full_name: string;
-	description: string;
-	pushed_at: string;
-	html_url: string
-}
-
+import { IRepository } from "../types/Repository.type";
 
 function RepositoryCard(props: IRepository) {
 
@@ -20,7 +12,7 @@ function RepositoryCard(props: IRepository) {
 	>
 		<Card className="mb-3">
 			<Card.Body>
-				<Card.Title>{props.name}</Card.Title>
+				<Card.Title>{props.name?.replaceAll("-", ' ')}</Card.Title>
 				<Card.Subtitle className="mb-2 text-muted">{props.full_name}</Card.Subtitle>
 				<Card.Text>{props.description}</Card.Text>
 				<Card.Link className="text-decoration-none" href="">

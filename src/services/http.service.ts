@@ -2,7 +2,6 @@ import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
 
 const instance: AxiosInstance = axios.create({
 	baseURL: 'https://api.github.com',
-	timeout: 1000,
 	headers: {
 		'Content-type': 'application/json',
 	},
@@ -11,24 +10,26 @@ const instance: AxiosInstance = axios.create({
 instance.interceptors.response.use(
 	(res) => res,
 	(error: AxiosError) => {
-		const { data, status, config } = error.response!;
+		const { status, message } = error;
 
 		switch (status) {
 			case 400:
-				console.error(data, config);
+				console.error(message);
 				break;
 
 			case 401:
-				console.error('unauthorised');
+				console.error(message);
 				break;
 
 			case 404:
-				console.error('/not-found');
+				console.error(message);
 				break;
 
 			case 500:
-				console.error('/server-error');
+				console.error(message);
 				break;
+			default:
+				console.log(message);
 		}
 
 		return Promise.reject(error);

@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { FC, ReactElement } from 'react'
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
 import './Sidebar.scss';
 import profile from "../assets/images/profile.jpg";
 
-export default function Sidebar() {
+const links: string[] = [
+	'about',
+	'experience',
+	'education',
+	'repositories',
+	'interests',
+	'awards',
+]
+
+export default function Sidebar(): ReactElement<FC> {
 	return (
 		<Navbar collapseOnSelect expand='lg' bg='primary' variant='dark' fixed='top' className='sideNav'>
 			<Navbar.Brand className='js-scroll-trigger' href="#page-top">
@@ -18,16 +27,10 @@ export default function Sidebar() {
 					/>
 				</span>
 			</Navbar.Brand>
-			<Navbar.Toggle aria-controls="navbarResponsive" />
-			<Navbar.Collapse id="navbarResponsive">
+			<Navbar.Toggle aria-controls="side-navbar" className='border-0' />
+			<Navbar.Collapse id="side-navbar">
 				<Nav className="me-auto">
-					<Nav.Link className='js-scroll-trigger' href="#about">About</Nav.Link>
-					<Nav.Link className='js-scroll-trigger' href="#experience">Experience</Nav.Link>
-					<Nav.Link className='js-scroll-trigger' href="#education">Education</Nav.Link>
-					<Nav.Link className='js-scroll-trigger' href="#skills">Skills</Nav.Link>
-					<Nav.Link className='js-scroll-trigger' href="#repositories">Repositories</Nav.Link>
-					<Nav.Link className='js-scroll-trigger' href="#interests">Interests</Nav.Link>
-					<Nav.Link className='js-scroll-trigger' href="#awards">Awards</Nav.Link>
+					{links.map((link: string, key: number) => <Nav.Link key={key} href={`#${link}`}>{link}</Nav.Link>)}
 				</Nav>
 			</Navbar.Collapse>
 		</Navbar>

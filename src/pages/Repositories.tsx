@@ -10,13 +10,17 @@ const Repositories: FC<{}> = (): ReactElement => {
 
 	const [repositories, setRepositories] = useState<IRepository[]>([])
 
-	const getRepositories = async (): Promise<void> => await http.list(`/users/${username}/repos`)
-		.then<void, never>((result) => {
-			setRepositories(result)
-		})
+	async function getRepositories(): Promise<void> {
+		await http.list(`/users/${username}/repos`)
+			.then<void, never>((result) => {
+				setRepositories(result)
+			})
+	}
 
 	useEffect(() => {
 		getRepositories()
+
+		return
 	}, [])
 
 	return (

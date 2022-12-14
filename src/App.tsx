@@ -8,11 +8,15 @@ import Experience from './pages/Experience';
 import Education from './pages/Education';
 import Skills from './pages/Skills';
 import Awards from './pages/Awards';
-import Interests from './pages/Interests';
 import './App.scss'
 import Repositories from './pages/Repositories';
+import Interests from './pages/Interests';
+import GoTopButton from './components/GoTopButton';
+import { useScroll } from './helpers/scroll';
 
 export default function App() {
+	const scrollPosition = useScroll()
+
 	return (
 		<ThemeProvider
 			breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
@@ -33,6 +37,8 @@ export default function App() {
 				<Interests />
 				<hr className='m-0' />
 				<Awards />
+
+				<GoTopButton visible={scrollPosition > 400} />
 			</Container>
 		</ThemeProvider>
 	)

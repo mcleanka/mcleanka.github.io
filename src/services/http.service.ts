@@ -39,7 +39,12 @@ instance.interceptors.response.use(
 const responseBody = <T>(response: AxiosResponse<T>) => response.data;
 
 const http = {
-	get: <T>(url: string) => instance.get<T>(url).then(responseBody),
+	get: <T>(url: string, params?: {}) =>
+		instance
+			.get<T>(url, {
+				params,
+			})
+			.then(responseBody),
 	post: <T>(url: string, body: {}) =>
 		instance.post<T>(url, body).then(responseBody),
 };

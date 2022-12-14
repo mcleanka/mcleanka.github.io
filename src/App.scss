@@ -76,3 +76,18 @@ section.resume-section {
 		padding-bottom: 5rem;
 	}
 }
+
+.page-item {
+
+	.page-link {
+
+		&:first-child {
+			border-radius: 0 !important;
+		}
+
+		&:last-child {
+			border-radius: 0 !important;
+		}
+	}
+
+}

@@ -6,7 +6,7 @@ import RepositoryCard from '../components/RepositoryCard'
 import { repos } from '../services'
 import { IRepository } from '../types/Repository.type'
 
-const username = process.env.REACT_APP_API_USERNAME;
+const api: string | undefined = process.env.REACT_APP_GIT_API;
 
 const Repositories: FC<{}> = (): ReactElement => {
 
@@ -22,12 +22,12 @@ const Repositories: FC<{}> = (): ReactElement => {
 	);
 
 	async function getRepositories(): Promise<void> {
-		await repos.list(`/users/${username}/repos`, {
+		await repos.list(`/repos`, {
 			q: 'tetris+language:assembly',
 			sort: 'stars',
 			per_page: 100,
 			type: 'public'
-		}).then<void, never>((result) => {
+		}, api).then<void, never>((result) => {
 			setRepositories(result)
 		})
 	}

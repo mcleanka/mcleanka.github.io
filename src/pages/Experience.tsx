@@ -8,9 +8,6 @@ import { IExperiences } from '../types/Experience.type';
 
 import './Experience.scss';
 
-const username = process.env.REACT_APP_API_USERNAME;
-const api: string | undefined = `https://my-json-server.typicode.com/${username}/rest-models/`
-
 function Experience(): ReactElement<FC> {
 	const [experiences, setExperiences] = useState<IExperiences[]>([]);
 
@@ -21,7 +18,7 @@ function Experience(): ReactElement<FC> {
 	};
 
 	const getExperiences = async (): Promise<void> => {
-		await experience.list("/experiences", {}, api)
+		await experience.list("/experiences", {})
 			.then<void, never>((result) => setExperiences(result))
 	}
 
@@ -49,7 +46,7 @@ function Experience(): ReactElement<FC> {
 				}
 
 				{
-					!experiences.length && <NotFound />
+					!experiences.length && <NotFound title='No experience found' />
 				}
 			</div>
 		</section>

@@ -8,8 +8,8 @@ import profile from "../assets/images/profile.jpg";
 const links: string[] = [
 	'about',
 	'experience',
-	'skills',
 	'education',
+	'skills',
 	'repositories',
 	'interests',
 	'awards',

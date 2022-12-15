@@ -5,7 +5,7 @@ export default function Skills() {
 	return (
 		<section className="resume-section" id="skills">
 			<div className="resume-section-content">
-				<h2 className="mb-5">Skills</h2>
+				<h2 className="mb-5">{'CORE SKILLS'}</h2>
 				<ul className="fa-ul mb-0">
 					<li>
 						<span className="fa-li">

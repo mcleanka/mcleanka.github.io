@@ -5,7 +5,7 @@ const repos = {
 	list(url: string, query: {}): Promise<IRepository[]> {
 		return http.get<IRepository[]>(url, query);
 	},
-	details(url: string): Promise<IRepository[]> {
+	show(url: string): Promise<IRepository[]> {
 		return http.get<IRepository[]>(url);
 	},
 };

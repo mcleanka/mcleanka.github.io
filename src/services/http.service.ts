@@ -39,14 +39,18 @@ instance.interceptors.response.use(
 const responseBody = <T>(response: AxiosResponse<T>) => response.data;
 
 const http = {
-	get: <T>(url: string, params?: {}) =>
-		instance
+	get: <T>(url: string, params?: {}, baseURL?: string) => {
+		return instance
 			.get<T>(url, {
 				params,
+				baseURL,
 			})
-			.then(responseBody),
-	post: <T>(url: string, body: {}) =>
-		instance.post<T>(url, body).then(responseBody),
+			.then(responseBody);
+	},
+	post: <T>(url: string, body: {}, baseURL?: string) => {
+		if (baseURL) instance.defaults.baseURL = baseURL;
+		return instance.post<T>(url, body).then(responseBody);
+	},
 };
 
 export default http;

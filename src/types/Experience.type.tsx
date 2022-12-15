@@ -2,7 +2,7 @@ export interface IExperience {
 	Id?: number;
 	CompanyName: string;
 	JobTitle: string;
-	JobDescription: string;
+	JobDescription: [];
 	StartDate: String;
 	EndDate: string;
 }

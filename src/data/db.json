@@ -1,44 +1,76 @@
 {
 	"experiences": [
 		{
-			"CompanyName": "Malawi Liverpool Welcome Programmes",
-			"JobTitle": "Part-Time Full Stack Software Developer (Intern)",
-			"JobDescription": "",
+			"CompanyName": "Malawi Liverpool Wellcome Trust",
+			"JobTitle": "Part-Time Software Developer (Intern)",
+			"JobDescription": [
+				"Designed and developed at least 4 web apps using PHP and JavaScript (Laravel, and React).",
+				"Supervising software development consultants to ensure that the final product follows MLW (Malawi Liverpool Wellcome) data policy and SOPs (Standard Operating Procedures)",
+				"Training trainers on how to use different web systems developed in-house",
+				"Generated Bi-weekly, monthly, and annual reports used by the head of the department using Microsoft Power BI",
+				"Actively participating in database design and writing queries, views, triggers procedures etc..."
+			],
 			"StartDate": "June 2019",
 			"EndDate": "December 2022"
 		},
 		{
 			"CompanyName": "Open Connect Limited",
 			"JobTitle": "Fiber Optic Technician (Intern)",
-			"JobDescription": "",
+			"JobDescription": [
+				"Inspecting, testing, and repairing equipment used in telecommunications networks",
+				"Installing new fiber optic networks and repairing existing ones as needed.",
+				"Installing fiber optic equipment such as splicing machines, fiber optic test equipment, and fiber optic cable termination devices",
+				"Performing troubleshooting on fiber optic networks to identify problems and provide solutions",
+				"Determining the location of underground utilities such as gas, water, and electricity lines before beginning construction work"
+			],
 			"StartDate": "Sept 2021",
 			"EndDate": "Jan 2022"
 		},
 		{
 			"CompanyName": "Afro World Health Organization (WHO)",
 			"JobTitle": "Consultant",
-			"JobDescription": "",
+			"JobDescription": [
+				"Developed database objects including tables, views, and indexes.",
+				"Evaluated and identified best practices Work in an Agile environment while participating in Scrum ceremonies",
+				"Participated in weekly code reviews where you would evaluate code and share your ideas",
+				"Assisted in identifying suitable technologies to be used in a particular project",
+				"Setting up and managing servers and databases"
+			],
 			"StartDate": "May 2021",
 			"EndDate": "December 2021"
 		},
 		{
 			"CompanyName": "Gibac I.T Services and Consultancy",
 			"JobTitle": "Part Time Website developer",
-			"JobDescription": "",
+			"JobDescription": [
+				"Designed and developed web-based applications to solve client needs",
+				"Created REST services using Web APIs",
+				"Created configured, build, and tested scripts for Continuous Integration environments",
+				"Implemented user stories, resolved bugs, gave status in daily standup calls",
+				"Assisted in software deployment and support"
+			],
 			"StartDate": "April 2018",
 			"EndDate": "June 2021"
 		},
 		{
 			"CompanyName": "Technical, Entrepreneurial and Vocational Education and Training",
 			"JobTitle": "Consultant",
-			"JobDescription": "",
+			"JobDescription": [
+				"Participating in system requirements gathering before starting application development",
+				"Leading in identifying IT solutions, architecting, and implementing based on accepted operational standards",
+				"Providing technical support to users"
+			],
 			"StartDate": "Nov 2018",
 			"EndDate": "March 2019"
 		},
 		{
-			"CompanyName": "Tobacco Control Commission (TAMA)",
+			"CompanyName": "Tobacco Control Commission",
 			"JobTitle": "Data Entry Clerk",
-			"JobDescription": "",
+			"JobDescription": [
+				"Engaging with data managers on how best the data can be managed and visualized",
+				"Providing technical support to users",
+				"Generated Bi-weekly, monthly, and annual reports"
+			],
 			"StartDate": "Apr 2016",
 			"EndDate": "Oct 2016"
 		}

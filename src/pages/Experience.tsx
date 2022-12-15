@@ -21,7 +21,7 @@ function Experience(): ReactElement<FC> {
 	return (
 		<section className="resume-section" id="experience">
 			<div className="resume-section-content">
-				<h2 className="mb-5">Experience</h2>
+				<h2 className="mb-5">{'PROFESSIONAL EXPERIENCE'}</h2>
 
 				{
 					experiences?.map((experience: any, key: number): JSX.Element => <ExperienceCard key={key} {...experience} />)

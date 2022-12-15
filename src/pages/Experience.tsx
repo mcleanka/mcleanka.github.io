@@ -1,5 +1,5 @@
 import React, { FC, ReactElement, useEffect, useState } from 'react';
-import { FaPlus } from 'react-icons/fa';
+import { FaSpinner } from 'react-icons/fa';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import ExperienceCard from '../components/ExperienceCard';
 import NotFound from '../components/NotFound';
@@ -41,7 +41,7 @@ function Experience(): ReactElement<FC> {
 						<VerticalTimelineElement
 							iconStyle={{ background: 'rgb(16, 204, 82)', color: '#fff' }}
 							iconClassName="vertical-timeline-element-icon--button"
-							icon={<FaPlus />}
+							icon={<FaSpinner />}
 							iconOnClick={loadMore}
 						/>
 

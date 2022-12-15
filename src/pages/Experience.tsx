@@ -9,7 +9,7 @@ import { IExperiences } from '../types/Experience.type';
 import './Experience.scss';
 
 const username = process.env.REACT_APP_API_USERNAME;
-const api: string | undefined = `https://my-json-server.typicode.com/${username}/mcleanka.github.io/src/data/`
+const api: string | undefined = `https://my-json-server.typicode.com/${username}/rest-models/`
 
 function Experience(): ReactElement<FC> {
 	const [experiences, setExperiences] = useState<IExperiences[]>([]);

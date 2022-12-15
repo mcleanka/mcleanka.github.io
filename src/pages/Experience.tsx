@@ -8,7 +8,8 @@ import { IExperiences } from '../types/Experience.type';
 
 import './Experience.scss';
 
-const api: string | undefined = process.env.REACT_APP_API_URL
+const username = process.env.REACT_APP_API_USERNAME;
+const api: string | undefined = `https://my-json-server.typicode.com/${username}/mcleanka.github.io/src/data/`
 
 function Experience(): ReactElement<FC> {
 	const [experiences, setExperiences] = useState<IExperiences[]>([]);
@@ -32,18 +33,20 @@ function Experience(): ReactElement<FC> {
 		<section className="resume-section" id="experience">
 			<div className="resume-section-content">
 				<h2 className="mb-5">{'PROFESSIONAL EXPERIENCE'}</h2>
-				<VerticalTimeline className='w-100'>
-					{
-						experiences?.map((experience: any, key: number): JSX.Element => <ExperienceCard key={key} {...experience} />)
-					}
-					<VerticalTimelineElement
-						iconStyle={{ background: 'rgb(16, 204, 82)', color: '#fff' }}
-						iconClassName="vertical-timeline-element-icon--button"
-						icon={<FaPlus />}
-						iconOnClick={loadMore}
-					/>
+				{
+					(experiences.length > 0) && <VerticalTimeline className='w-100'>
+						{
+							experiences?.map((experience: any, key: number): JSX.Element => <ExperienceCard key={key} {...experience} />)
+						}
+						<VerticalTimelineElement
+							iconStyle={{ background: 'rgb(16, 204, 82)', color: '#fff' }}
+							iconClassName="vertical-timeline-element-icon--button"
+							icon={<FaPlus />}
+							iconOnClick={loadMore}
+						/>
 
-				</VerticalTimeline>
+					</VerticalTimeline>
+				}
 
 				{
 					!experiences.length && <NotFound />

@@ -1,7 +1,11 @@
 import React from 'react'
 import { FaExclamationTriangle } from 'react-icons/fa'
 
-export default function NotFound() {
+interface INotFound {
+  title?: string;
+}
+
+export default function NotFound(props: INotFound) {
   return (
     <>
       {<ul className="fa-ul mb-0">
@@ -9,7 +13,7 @@ export default function NotFound() {
           <span className="fa-li">
             <FaExclamationTriangle size={25} />
           </span> {' '}
-          {'No experience found 😬'}
+          {props.title ?? 'No resource found 😬'}
         </li>
       </ul>}
     </>

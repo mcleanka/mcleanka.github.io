@@ -1,9 +1,9 @@
 import React, { useEffect, useState, FC, ReactElement } from 'react'
 import { Container, Row } from 'react-bootstrap'
-import { FaArrowRight } from 'react-icons/fa'
+import NotFound from '../components/NotFound'
 import PaginationComponent from '../components/Pagination'
 import RepositoryCard from '../components/RepositoryCard'
-import { repos as http } from '../services/index.service'
+import { repos } from '../services'
 import { IRepository } from '../types/Repository.type'
 
 const username = process.env.REACT_APP_API_USERNAME;
@@ -22,7 +22,7 @@ const Repositories: FC<{}> = (): ReactElement => {
 	);
 
 	async function getRepositories(): Promise<void> {
-		await http.list(`/users/${username}/repos`, {
+		await repos.list(`/users/${username}/repos`, {
 			q: 'tetris+language:assembly',
 			sort: 'stars',
 			per_page: 100,
@@ -48,20 +48,11 @@ const Repositories: FC<{}> = (): ReactElement => {
 						}
 
 						{
-							!limitedRepositories.length && <>
-								<ul className="fa-ul mb-0">
-									<li>
-										<span className="fa-li">
-											<FaArrowRight />
-										</span> {' '}
-										Nothing left...
-									</li>
-								</ul>
-							</>
+							!limitedRepositories.length && <NotFound />
 						}
 
 						{
-							limitedRepositories.length && <PaginationComponent
+							limitedRepositories.length > 0 && <PaginationComponent
 								itemsCount={repositories.length}
 								itemsPerPage={repositoriesPerPage}
 								currentPage={currentPage}

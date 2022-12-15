@@ -1,7 +1,7 @@
 import React from 'react'
 import { IQualification } from '../types/Education.type'
 
-export default function EducationCard(props: IQualification) {
+export default function EducationCard(props: IQualification): JSX.Element {
 	return (
 		<>
 			<div className="d-flex flex-column flex-md-row justify-content-between mb-5">

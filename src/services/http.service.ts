@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
 
 const instance: AxiosInstance = axios.create({
-	baseURL: 'https://api.github.com',
+	baseURL: process.env.REACT_APP_API_URL,
 	headers: {
 		'Content-type': 'application/json',
 	},

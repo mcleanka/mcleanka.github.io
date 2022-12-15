@@ -39,7 +39,7 @@ function Experience(): ReactElement<FC> {
 							experiences?.map((experience: any, key: number): JSX.Element => <ExperienceCard key={key} {...experience} />)
 						}
 						<VerticalTimelineElement
-							iconStyle={{ background: 'rgb(16, 204, 82)', color: '#fff' }}
+							iconStyle={{ background: '#0d6efd', color: '#fff' }}
 							iconClassName="vertical-timeline-element-icon--button"
 							icon={<FaSpinner />}
 							iconOnClick={loadMore}

@@ -1,12 +1,10 @@
 export interface IAward {
+	Title: string;
 	Institution: string;
-	Qualifications: string;
-	Program: string;
-	Average: string;
-	StartDate: string;
-	EndDate: string;
+	Description: string;
+	Icon: string;
 }
 
 export interface IAwards {
-	IAward: IAward[]
+	IAward: IAward[];
 }

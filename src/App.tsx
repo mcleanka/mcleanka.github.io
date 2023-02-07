@@ -2,17 +2,14 @@ import React from 'react'
 import Container from 'react-bootstrap/Container';
 import ThemeProvider from 'react-bootstrap/ThemeProvider';
 
-import Sidebar from './components/Sidebar';
-import About from './pages/About';
-import Experience from './pages/Experience';
-import Education from './pages/Education';
-import Skills from './pages/Skills';
-import Awards from './pages/Awards';
+
 import './App.scss'
-import Repositories from './pages/Repositories';
-import Interests from './pages/Interests';
+
+import Sidebar from './components/Sidebar';
 import GoTopButton from './components/GoTopButton';
+
 import { useScroll } from './helpers/scroll';
+import { About, Awards, Education, Experience, Interests, Repositories, Skills } from './pages';
 
 export default function App() {
 	const scrollPosition = useScroll()

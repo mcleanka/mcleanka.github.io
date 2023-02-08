@@ -6,5 +6,5 @@ export interface IAward {
 }
 
 export interface IAwards {
-	IAward: IAward[];
+	IAward?: IAward[];
 }

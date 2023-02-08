@@ -1,5 +1,5 @@
 import React, { FC, ReactElement, useEffect, useState } from 'react';
-import { FaAward } from 'react-icons/fa';
+import { FaAward, FaGraduationCap } from 'react-icons/fa';
 import { NotFound } from '../components';
 import { award } from '../services';
 import { IAwards } from '../types/Award.type';
@@ -22,20 +22,19 @@ const Awards: FC<{}> = (): ReactElement => {
 			<div className="resume-section-content">
 				<h2 className="mb-5">{'Awards & Certifications'}</h2>
 				{
-					!(awards.length > 0) && (
+					(awards.length > 0) && (
 						<div className="row">
 							{
-								awards.map((award, key) => <div className="col-lg-4 col-md-6 d-flex align-items-stretch" key={key}>
+								awards?.map((award: any, key: number) => <div className="col-lg-4 col-md-6 d-flex align-items-stretch" key={key}>
 									<div className="icon-box">
 										<div className="icon">
-											<FaAward />
+											[<FaAward />, <FaGraduationCap />]?.{award.Icon}
 										</div>
 										<h4>
-											<a href="./">Lorem Ipsum</a>
+											<a href="./">{award.Title}</a>
 										</h4>
 										<p>
-											Voluptatum deleniti atque corrupti quos dolores et quas molestias
-											excepturi
+											{award.Description}
 										</p>
 									</div>
 								</div>)

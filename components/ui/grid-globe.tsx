@@ -1,14 +1,9 @@
 "use client";
 
 import React from "react";
-import dynamic from "next/dynamic";
+import { World } from "./globe";
 
 const colors = ["#06b6d4", "#3b82f6", "#6366f1"];
-
-const World = dynamic(() => import("./globe").then((m) => m.World), {
-	ssr: false,
-});
-
 
 const globeConfig = {
 	pointSize: 4,

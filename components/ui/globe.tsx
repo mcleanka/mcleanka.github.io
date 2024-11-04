@@ -27,14 +27,6 @@ type Position = {
 	color: string;
 };
 
-type PointProps = {
-	color: (t: number) => string;
-	size: number;
-	order: number;
-	lat: number;
-	lng: number;
-}
-
 export type GlobeConfig = {
 	pointSize?: number;
 	globeColor?: string;
@@ -99,6 +91,13 @@ export function Globe({ globeConfig, data }: WorldProps) {
 		...globeConfig,
 	};
 
+	useEffect(() => {
+		if (globeRef.current) {
+			_buildData();
+			_buildMaterial();
+		}
+	}, [globeRef.current]);
+
 	const _buildMaterial = () => {
 		if (!globeRef.current) return;
 
@@ -116,7 +115,8 @@ export function Globe({ globeConfig, data }: WorldProps) {
 
 	const _buildData = () => {
 		const arcs = data;
-		const points: Array<PointProps> = [] as Array<PointProps>;
+		const points = [];
+
 		for (let i = 0; i < arcs.length; i++) {
 			const arc = arcs[i];
 			const rgb = hexToRgb(arc.color) as { r: number; g: number; b: number };
@@ -150,13 +150,6 @@ export function Globe({ globeConfig, data }: WorldProps) {
 	};
 
 	useEffect(() => {
-		if (globeRef.current) {
-			_buildData();
-			_buildMaterial();
-		}
-	}, [globeRef.current]);
-
-	useEffect(() => {
 		if (globeRef.current && globeData) {
 			globeRef.current
 				.hexPolygonsData(countries.features)
@@ -165,12 +158,12 @@ export function Globe({ globeConfig, data }: WorldProps) {
 				.showAtmosphere(defaultProps.showAtmosphere)
 				.atmosphereColor(defaultProps.atmosphereColor)
 				.atmosphereAltitude(defaultProps.atmosphereAltitude)
-				.hexPolygonColor(() => {
+				.hexPolygonColor((e) => {
 					return defaultProps.polygonColor;
 				});
 			startAnimation();
 		}
-	}, [globeData, globeRef, defaultProps]);
+	}, [globeData]);
 
 	const startAnimation = () => {
 		if (!globeRef.current || !globeData) return;
@@ -185,13 +178,13 @@ export function Globe({ globeConfig, data }: WorldProps) {
 			.arcAltitude((e) => {
 				return (e as { arcAlt: number }).arcAlt * 1;
 			})
-			.arcStroke(() => {
+			.arcStroke((e) => {
 				return [0.32, 0.28, 0.3][Math.round(Math.random() * 2)];
 			})
 			.arcDashLength(defaultProps.arcLength)
 			.arcDashInitialGap((e) => (e as { order: number }).order * 1)
 			.arcDashGap(15)
-			.arcDashAnimateTime(() => defaultProps.arcTime);
+			.arcDashAnimateTime((e) => defaultProps.arcTime);
 
 		globeRef.current
 			.pointsData(data)
@@ -229,7 +222,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
 		return () => {
 			clearInterval(interval);
 		};
-	}, [globeRef, data, globeData]);
+	}, [globeRef.current, globeData]);
 
 	return (
 		<>
@@ -245,35 +238,9 @@ export function WebGLRendererConfig() {
 		gl.setPixelRatio(window.devicePixelRatio);
 		gl.setSize(size.width, size.height);
 		gl.setClearColor(0xffaaff, 0);
-	}, [gl, size]);
+	}, []);
 
 	return null;
-}
-
-export function hexToRgb(hex: string) {
-	const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-	hex = hex.replace(shorthandRegex, function (m, r, g, b) {
-		return r + r + g + g + b + b;
-	});
-
-	const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-	return result
-		? {
-			r: parseInt(result[1], 16),
-			g: parseInt(result[2], 16),
-			b: parseInt(result[3], 16),
-		}
-		: null;
-}
-
-export function genRandomNumbers(min: number, max: number, count: number) {
-	const arr = [];
-	while (arr.length < count) {
-		const r = Math.floor(Math.random() * (max - min)) + min;
-		if (arr.indexOf(r) === -1) arr.push(r);
-	}
-
-	return arr;
 }
 
 export function World(props: WorldProps) {
@@ -310,4 +277,30 @@ export function World(props: WorldProps) {
 			/>
 		</Canvas>
 	);
+}
+
+export function hexToRgb(hex: string) {
+	const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+	hex = hex.replace(shorthandRegex, function (m, r, g, b) {
+		return r + r + g + g + b + b;
+	});
+
+	const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+	return result
+		? {
+			r: parseInt(result[1], 16),
+			g: parseInt(result[2], 16),
+			b: parseInt(result[3], 16),
+		}
+		: null;
+}
+
+export function genRandomNumbers(min: number, max: number, count: number) {
+	const arr = [];
+	while (arr.length < count) {
+		const r = Math.floor(Math.random() * (max - min)) + min;
+		if (arr.indexOf(r) === -1) arr.push(r);
+	}
+
+	return arr;
 }

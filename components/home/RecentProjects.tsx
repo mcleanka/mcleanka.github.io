@@ -4,6 +4,7 @@
 import { FaLocationArrow } from "react-icons/fa6";
 import { projects } from "@/data";
 import { PinContainer } from "@/components/ui/pin";
+import { getImagePath } from "@/utils/image-path";
 
 const RecentProjects: React.FunctionComponent = () => {
 	return (
@@ -27,9 +28,9 @@ const RecentProjects: React.FunctionComponent = () => {
 									className="relative w-full h-full overflow-hidden lg:rounded-3xl"
 									style={{ backgroundColor: "#13162D" }}
 								>
-									<img src='./bg.png' alt="bgimg" />
+									<img src={getImagePath('./bg.png')} alt="bgimg" />
 								</div>
-								<img src={item.img} alt="cover" className="z-10 absolute bottom-0"
+								<img src={getImagePath(item.img)} alt="cover" className="z-10 absolute bottom-0"
 								/>
 							</div>
 
@@ -57,7 +58,7 @@ const RecentProjects: React.FunctionComponent = () => {
 												transform: `translateX(-${5 * index + 2}px)`,
 											}}
 										>
-											<img src={icon} alt="icon5" className="p-2" />
+											<img src={getImagePath(icon)} alt="icon5" className="p-2" />
 										</div>
 									))}
 								</div>

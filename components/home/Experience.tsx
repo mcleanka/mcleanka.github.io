@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import { workExperience } from '@/data'
 import Image from 'next/image'
 import { MovingBorderButton } from '@/components/ui/moving-borders'
+import { getImagePath } from '@/utils/image-path'
 
 const experience = {
 	icon: '/asset/resume/badge.svg',
@@ -30,7 +31,7 @@ const Experience: FC = () => {
 					>
 						<div className="flex lg:flex-row flex-col lg:items-center p-3 py-6 md:p-5 lg:p-10 gap-2">
 							<Image
-								src={card.thumbnail}
+								src={getImagePath(card.thumbnail)}
 								alt={card.thumbnail}
 								width={150}
 								height={150}

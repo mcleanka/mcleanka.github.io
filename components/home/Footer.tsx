@@ -11,7 +11,7 @@ const Footer: FC = () => {
 		<footer className="w-full pt-0 pb-10" id="contact">
 			<div className="absolute left-0 -bottom-72 min-h-96">
 				<img
-					src="/footer-grid.svg"
+					src={getImagePath("/footer-grid.svg")}
 					alt="grid"
 					className="w-full h-full opacity-50 "
 				/>

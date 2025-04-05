@@ -14,7 +14,7 @@ export default function Skills() {
 						Coming soon...
 					</li>
 				</ul>
-				{/* <div className="subheading mb-3">Programming Languages &amp; Tools</div>
+				<div className="subheading mb-3">Programming Languages &amp; Tools</div>
 				<ul className="list-inline dev-icons">
 					<li className="list-inline-item">
 						<i className="fab fa-html5" />
@@ -79,7 +79,7 @@ export default function Skills() {
 						</span>
 						Agile Development &amp; Scrum
 					</li>
-				</ul> */}
+				</ul>
 			</div>
 		</section>
 	)

@@ -1,12 +1,5 @@
-import React from "react";
-import Container from "react-bootstrap/Container";
-import ThemeProvider from "react-bootstrap/ThemeProvider";
-
-import "./App.scss";
-
-import Sidebar from "./components/Sidebar";
+import React, { useEffect, useState } from "react";
 import GoTopButton from "./components/GoTopButton";
-
 import { useScroll } from "./helpers/scroll";
 import {
   About,
@@ -17,33 +10,55 @@ import {
   Repositories,
   Skills,
 } from "./pages";
+import FadeIn from "./components/FadeIn";
+import { Navigation } from "./components";
 
-export default function App() {
+const App: React.FC = () => {
   const scrollPosition = useScroll();
+  const [mode, setMode] = useState<string>(() => {
+    return localStorage.getItem("theme") || "light";
+  });
+
+  const toggleTheme = () => {
+    const newMode = mode === "dark" ? "light" : "dark";
+    setMode(newMode);
+    localStorage.setItem("theme", newMode);
+  };
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    if (mode === "dark") {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
+  }, [mode]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
 
   return (
-    <ThemeProvider
-      breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm", "xs", "xxs"]}
-      minBreakpoint="xxs"
-    >
-      <Sidebar />
-      <Container className="p-0">
-        <About />
-        <hr className="m-0" />
+    <div className="flex min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+      <Navigation parentToChild={{ mode }} handleChangeTheme={toggleTheme} />
+      <FadeIn transitionDuration={700} className="flex-1 ml-64">
+        <About theme={mode} />
+        <div className="h-px bg-gradient-to-r from-cyan-500 to-blue-500 my-6 animate-pulse" />
         <Experience />
-        <hr className="m-0" />
+        <div className="h-px bg-gradient-to-r from-cyan-500 to-blue-500 my-6 animate-pulse" />
         <Education />
-        <hr className="m-0" />
+        <div className="h-px bg-gradient-to-r from-cyan-500 to-blue-500 my-6 animate-pulse" />
         <Skills />
-        <hr className="m-0" />
+        <div className="h-px bg-gradient-to-r from-cyan-500 to-blue-500 my-6 animate-pulse" />
         <Repositories />
-        <hr className="m-0" />
+        <div className="h-px bg-gradient-to-r from-cyan-500 to-blue-500 my-6 animate-pulse" />
         <Interests />
-        <hr className="m-0" />
+        <div className="h-px bg-gradient-to-r from-cyan-500 to-blue-500 my-6 animate-pulse" />
         <Awards />
-
         <GoTopButton visible={scrollPosition > 400} />
-      </Container>
-    </ThemeProvider>
+      </FadeIn>
+    </div>
   );
-}
+};
+
+export default App;

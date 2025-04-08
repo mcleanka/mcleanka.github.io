@@ -1,30 +1,33 @@
-import React from 'react'
-import { IExperience } from '../types/Experience.type';
-import { VerticalTimelineElement } from 'react-vertical-timeline-component';
-import { FaClock } from 'react-icons/fa';
+import React from "react";
+import { IExperience } from "../types/Experience.type";
+import { VerticalTimelineElement } from "react-vertical-timeline-component";
+import { FaBriefcase } from "react-icons/fa";
 
-export default function ExperienceCard(props: IExperience) {
-	return (
-		<>
-			<VerticalTimelineElement
-				className="vertical-timeline-element--work"
-				contentArrowStyle={{ borderRight: '7px solid  #efefef' }}
-				date={props.StartDate + ' - ' + props.EndDate}
-				iconStyle={{ background: '#0d6efd', color: '#fff' }}
-				icon={<FaClock />}
-				key={props.Id}
-			>
-				<h5 className="vertical-timeline-element-title h5">{props.CompanyName}</h5>
-				<h4 className="vertical-timeline-element-subtitle small">{props.JobTitle}</h4>
+const ExperienceCard: React.FunctionComponent<IExperience> = (
+  props: IExperience
+) => {
+  return (
+    <React.Fragment>
+      <VerticalTimelineElement
+        className="vertical-timeline-element--work"
+        contentStyle={{ background: "white", color: "rgb(39, 40, 34)" }}
+        contentArrowStyle={{ borderRight: "7px solid  white" }}
+        date={props.StartDate + " - " + props.EndDate}
+        iconStyle={{ background: "#006699", color: "rgb(39, 40, 34)" }}
+        icon={<FaBriefcase />}
+        key={props.Id}
+      >
+        <h3 className="vertical-timeline-element-title h5">
+          {props.CompanyName}
+        </h3>
+        <h4 className="vertical-timeline-element-subtitle small">
+          {props.JobTitle}
+        </h4>
 
-				<ul className="mb-0 mt-1">
-					{
-						props.JobDescription?.map((description, key) => <>
-							<li key={key} className='small text-muted'>{description}</li>
-						</>)
-					}
-				</ul>
-			</VerticalTimelineElement>
-		</>
-	)
-}
+        <p>{props.JobDescription.join(" ")}</p>
+      </VerticalTimelineElement>
+    </React.Fragment>
+  );
+};
+
+export default ExperienceCard;

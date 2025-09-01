@@ -31,6 +31,18 @@ body {
   position: relative;
 }
 
+.bg-lightest-navy {
+  background: var(--lightest-navy)
+}
+
+.text-lightest-navy {
+  color: var(--green)
+}
+
+.border-lightest-navy {
+  border-color: var(--green)
+}
+
 .font-mono {
   font-family: "JetBrains Mono", monospace;
 }

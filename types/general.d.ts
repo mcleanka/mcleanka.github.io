@@ -31,3 +31,23 @@ interface Project {
     externalLink?: string;
     isReversed?: boolean;
 }
+
+interface Experience {
+    role: string;
+    company: string;
+    period: string;
+    responsibilities: string[];
+}
+
+interface ExperienceData {
+    [companyKey: string]: Experience;
+}
+
+type CompanyKey =
+    | "EGPAF"
+    | "Sigma Group"
+    | "MLW Trust"
+    | "Afro WHO"
+    | "Open Connect"
+    | "Gibac IT"
+    | "TAMA";

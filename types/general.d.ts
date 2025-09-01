@@ -17,3 +17,17 @@ type Profile = {
     total_private_repos: number;
     collaborators: number;
 };
+
+interface Project {
+    id: string;
+    title: string;
+    description: string;
+    technologies: string[];
+    category: 'featured' | 'noteworthy';
+    icon: LucideIcon;
+    gradient?: string;
+    status?: 'live' | 'government' | 'ministry';
+    organization?: string;
+    externalLink?: string;
+    isReversed?: boolean;
+}

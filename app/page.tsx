@@ -1,43 +1,30 @@
-import { BentoGrid, BentoGridItem } from "@/components/home/BentoGridItem";
-import Clients from "@/components/home/Clients";
-import Footer from "@/components/home/Footer";
-import Hero from "@/components/home/Hero";
-import RecentProjects from "@/components/home/RecentProjects";
-import Resume from "@/components/home/Resume";
-import { FloatingNav } from "@/components/ui/floating-nav";
-import { gridItems, navItems } from "@/data";
+import { sanitizeProfile } from "@/lib/utils";
+import HomeClient from "@/components/pages/HomeClient";
 
-export default function Home() {
-  return (
-    <main className="relative bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
-      <div className="max-w-7xl w-full">
-        <FloatingNav navItems={navItems} />
-        <Hero />
+async function fetchGitHubProfile(): Promise<Profile> {
+  try {
+    const githubToken = process.env.GITHUB_TOKEN;
+    if (!githubToken) throw new Error("GitHub Personal Access Token is not defined.");
 
-        <section id="about">
-          <BentoGrid className="w-full py-20">
-            {gridItems.map((item, i) => (
-              <BentoGridItem
-                id={item.id}
-                key={i}
-                title={item.title}
-                description={item.description}
-                className={item.className}
-                img={item.img}
-                imgClassName={item.imgClassName}
-                titleClassName={item.titleClassName}
-                spareImg={item.spareImg}
-              />
-            ))}
-          </BentoGrid>
-        </section>
+    const response = await fetch("https://api.github.com/user", {
+      headers: {
+        Authorization: `Bearer ${githubToken}`,
+        Accept: "application/vnd.github+json",
+      },
+      cache: "no-store",
+    });
 
-        <RecentProjects />
-        <Clients />
-        <Resume />
-        <Footer />
+    if (!response.ok) throw new Error(`GitHub API responded with status: ${response.status}`);
 
-      </div>
-    </main>
-  );
+    const userData = await response.json();
+    return sanitizeProfile(userData);
+  } catch (error) {
+    console.error("Error fetching GitHub profile:", error);
+    return sanitizeProfile({} as Profile);
+  }
+}
+
+export default async function Page() {
+  const profile = await fetchGitHubProfile();
+  return <HomeClient profile={profile} />;
 }

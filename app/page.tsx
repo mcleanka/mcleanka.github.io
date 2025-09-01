@@ -1,6 +1,8 @@
 import { sanitizeProfile } from "@/lib/utils";
 import HomeClient from "@/components/pages/HomeClient";
 
+export const dynamic = 'force-dynamic';
+
 async function fetchGitHubProfile(): Promise<Profile> {
   try {
     const githubToken = process.env.GITHUB_TOKEN;
@@ -15,7 +17,6 @@ async function fetchGitHubProfile(): Promise<Profile> {
     });
 
     if (!response.ok) throw new Error(`GitHub API responded with status: ${response.status}`);
-
     const userData = await response.json();
     return sanitizeProfile(userData);
   } catch (error) {

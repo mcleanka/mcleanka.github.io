@@ -18,7 +18,7 @@ type HomeClientProps = {
 export default function HomeClient({ profile }: HomeClientProps) {
     const [currentSection, setCurrentSection] = useState("home");
     const [isAnimating, setIsAnimating] = useState(false);
-    const sections = ["home", "about", "projects", "skills", "contact"];
+    const sections = ["home", "about", "skills", "projects", "contact"];
 
     const handleSectionChange = (section: string) => {
         if (isAnimating || section === currentSection) return;

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React, { FunctionComponent, useState } from "react";
+import SectionHeader from "../SectionHeader";
 
 interface AboutSectionProps {
     profile: Profile;
@@ -14,18 +15,18 @@ const AboutSection: FunctionComponent<AboutSectionProps> = ({ currentSection, pr
         "JavaScript / TypeScript",
         "React, Next.js & Vue",
         "Node.js & Express",
-        "Python & Kotlin",
-        "PostgreSQL & MongoDB",
+        "Python, Java & Kotlin",
+        "C++, C & C#",
         "Docker & DevOps",
     ];
 
     const additionalSkills = [
-        "Azure & Cloud Platforms",
-        "PostgreSQL & MongoDB",
-        "IoT Development",
-        "System Integration",
-        "API Development",
-        "Mobile Development"
+        "Cloud Platforms (Azure, DigitalOcean, Firebase)",
+        "IoT Development (C++, Python, ESPs, Raspberry Pi)",
+        "System Integration & Automation",
+        "API Development (REST & GraphQL)",
+        "Mobile Development (React Native, Capacitor)",
+        "Database & Server Management (MySQL, PostgreSQL, Apache2, Nginx)",
     ];
 
     return (
@@ -37,23 +38,14 @@ const AboutSection: FunctionComponent<AboutSectionProps> = ({ currentSection, pr
             <div className="max-w-6xl mx-auto flex items-center min-h-full">
                 <div className="grid lg:grid-cols-2 gap-12 items-start w-full">
                     <div className="space-y-6">
-                        <div className="flex items-center gap-4 mb-8">
-                            <h2 className="text-2xl font-bold text-white-custom font-mono">
-                                <span className="text-accent">01.</span> About Me
-                            </h2>
-                            <div
-                                className="h-px bg-lightest-navy flex-1"
-                                style={{ background: "var(--lightest-navy)" }}
-                            />
-                        </div>
+
+                        <SectionHeader number="01" title="About Me" />
 
                         <div className="space-y-4 text-secondary leading-relaxed">
                             <p>
                                 Hi, I&apos;m <span className="text-accent">McLean Kasambala</span>,
                                 a Computer Engineer from Malawi with 5+ years of experience in{" "}
-                                <span className="text-accent">full-stack development</span>,{" "}
-                                <span className="text-accent">IoT systems</span>, and{" "}
-                                <span className="text-accent">cloud infrastructure</span>.
+                                full-stack development, IoT systems, and cloud infrastructure.
                             </p>
                             <p>
                                 I have developed and deployed large-scale systems for{" "}
@@ -66,9 +58,7 @@ const AboutSection: FunctionComponent<AboutSectionProps> = ({ currentSection, pr
                             </p>
                             <p>
                                 My focus is building scalable and accessible digital solutions that
-                                improve <span className="text-accent">healthcare</span>,
-                                <span className="text-accent"> education</span>, and
-                                <span className="text-accent"> civic services</span>.
+                                improve healthcare, education, and civic services.
                             </p>
                             <p>Here are the core technologies I work with regularly:</p>
                         </div>
@@ -88,7 +78,7 @@ const AboutSection: FunctionComponent<AboutSectionProps> = ({ currentSection, pr
                                 {additionalSkills.map((skill, index) => (
                                     <span
                                         key={index}
-                                        className="px-3 py-1 text-xs font-mono bg-lightest-navy/30 text-accent rounded-full border border-accent/20 hover:border-accent/50 transition-colors duration-200"
+                                        className="px-3 py-1 text-xs font-mono bg-lightest-navy rounded-full border border-accent/20 hover:border-accent/50 transition-colors duration-200"
                                     >
                                         {skill}
                                     </span>

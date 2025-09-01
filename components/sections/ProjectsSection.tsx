@@ -24,7 +24,8 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
             id="projects"
         >
             <div className="max-w-6xl mx-auto py-8">
-                <SectionHeader number="02" title="Some Things I've Built" />
+
+                <SectionHeader number="03" title="Some Things I've Built" />
 
                 <div className="space-y-16">
                     {featuredProjects.map((project) => (

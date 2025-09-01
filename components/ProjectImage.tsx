@@ -9,7 +9,7 @@ const ProjectImage: React.FC<ProjectImageProps> = ({ project }) => {
     const IconComponent = project.icon;
 
     return (
-        <div className="relative rounded overflow-hidden shadow-2xl glow">
+        <div className="relative rounded overflow-hidden border border-[#233554]">
             <div className={`aspect-video bg-gradient-to-br ${project.gradient} flex items-center justify-center relative`}>
                 <IconComponent className="w-16 h-16 text-navy" strokeWidth={1.5} />
                 {project.status === 'live' && (

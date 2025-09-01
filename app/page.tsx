@@ -97,7 +97,7 @@ export default function Page() {
             />
           </div>
           <div className="mt-6 space-y-2">
-            <div className="text-xl font-semibold text-gray-400">Loading GitHub Profile</div>
+            <div className="text-xl font-semibold text-gray-400">Loading, please wait...</div>
             <div className="text-sm text-gray-300">Fetching data for @{targetUsername}</div>
           </div>
         </div>

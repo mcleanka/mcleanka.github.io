@@ -24,7 +24,7 @@ const HomeSection: FC<HomeSectionProps> = ({ currentSection, onSectionChange }) 
 
         <p className="text-lg text-secondary mb-16 max-w-2xl leading-relaxed">
           I&apos;m a computer engineer specializing in{" "}
-          <span className="text-accent">web, mobile, and cloud systems</span>.
+          <span className="text-accent">web, desktop, mobile, IoT and cloud systems</span>.
           Currently, I&apos;m focused on creating scalable, human-centered products
           in Malawi and beyond.
         </p>

@@ -12,8 +12,6 @@ const nextConfig: NextConfig = {
 			}
 		],
 	},
-	// basePath: process.env.NODE_ENV === 'production' ? '/my-profile' : '',
-	// assetPrefix: process.env.NODE_ENV === 'production' ? '/my-profile' : '',
 };
 
 export default nextConfig;

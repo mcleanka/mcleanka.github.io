@@ -4,17 +4,13 @@ import { sanitizeProfile } from "@/lib/utils";
 import HomeClient from "@/components/pages/HomeClient";
 import { useEffect, useState } from "react";
 
-interface GitHubProfileFetcherProps {
-  username?: string;
-}
-
-export default function Page({ username }: GitHubProfileFetcherProps = {}) {
+export default function Page() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   const DEFAULT_USERNAME = process.env.NEXT_PUBLIC_GITHUB_USERNAME || "octocat";
-  const targetUsername = username || DEFAULT_USERNAME;
+  const targetUsername = DEFAULT_USERNAME;
 
   async function fetchGitHubProfile(githubUsername: string): Promise<Profile> {
     try {

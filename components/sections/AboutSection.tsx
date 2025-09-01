@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useState } from "react";
 
 interface AboutSectionProps {
     profile: Profile;
@@ -8,6 +8,26 @@ interface AboutSectionProps {
 }
 
 const AboutSection: FunctionComponent<AboutSectionProps> = ({ currentSection, profile }) => {
+    const [imageLoaded, setImageLoaded] = useState(false);
+
+    const currentTech = [
+        "JavaScript / TypeScript",
+        "React, Next.js & Vue",
+        "Node.js & Express",
+        "Python & Kotlin",
+        "PostgreSQL & MongoDB",
+        "Docker & DevOps",
+    ];
+
+    const additionalSkills = [
+        "Azure & Cloud Platforms",
+        "PostgreSQL & MongoDB",
+        "IoT Development",
+        "System Integration",
+        "API Development",
+        "Mobile Development"
+    ];
+
     return (
         <div
             id="about"
@@ -24,81 +44,116 @@ const AboutSection: FunctionComponent<AboutSectionProps> = ({ currentSection, pr
                             <div
                                 className="h-px bg-lightest-navy flex-1"
                                 style={{ background: "var(--lightest-navy)" }}
-                            ></div>
+                            />
                         </div>
 
                         <div className="space-y-4 text-secondary leading-relaxed">
                             <p>
-                                Hello! My name is McLean and I enjoy creating things that live on
-                                the internet. My interest in web development started back in 2012
-                                when I decided to try editing custom Tumblr themes — turns out
-                                hacking together a custom reblog button taught me a lot about HTML
-                                & CSS!
+                                Hi, I&apos;m <span className="text-accent">McLean Kasambala</span>,
+                                a Computer Engineer from Malawi with 5+ years of experience in{" "}
+                                <span className="text-accent">full-stack development</span>,{" "}
+                                <span className="text-accent">IoT systems</span>, and{" "}
+                                <span className="text-accent">cloud infrastructure</span>.
                             </p>
                             <p>
-                                Fast-forward to today, and I&apos;ve had the privilege of working
-                                at <span className="text-accent">an advertising agency</span>,{" "}
-                                <span className="text-accent">a start-up</span>,{" "}
-                                <span className="text-accent">a huge corporation</span>, and{" "}
-                                <span className="text-accent">a student-led design studio</span>.
-                                My main focus these days is building accessible, inclusive
-                                products and digital experiences at{" "}
-                                <span className="text-accent">Upstatement</span> for a variety of
-                                clients.
+                                I have developed and deployed large-scale systems for{" "}
+                                <span className="text-accent">Elizabeth Glaser Paediatric AIDS Foundation </span>
+                                (CRVS system – 17M+ records),{" "}
+                                <span className="text-accent">Sigma Group Technologies </span>
+                                (Minister of Education&apos;s Next Generation Skills app), and{" "}
+                                <span className="text-accent">Malawi Liverpool Wellcome Trust </span>
+                                (management information systems).
                             </p>
                             <p>
-                                I also recently{" "}
-                                <span className="text-accent">launched a course</span> that covers
-                                everything you need to build a web app with the Spotify API using
-                                Node & React.
+                                My focus is building scalable and accessible digital solutions that
+                                improve <span className="text-accent">healthcare</span>,
+                                <span className="text-accent"> education</span>, and
+                                <span className="text-accent"> civic services</span>.
                             </p>
-                            <p>Here are a few technologies I&apos;ve been working with recently:</p>
+                            <p>Here are the core technologies I work with regularly:</p>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-2 text-sm font-mono">
-                            <div className="flex items-center">
-                                <span className="text-accent mr-2">▹</span>
-                                <span className="text-secondary">JavaScript (ES6+)</span>
+                        <div className="grid grid-cols-2 gap-2 text-sm font-mono mb-6">
+                            {currentTech.map((tech, index) => (
+                                <div key={index} className="flex items-center group">
+                                    <span className="text-accent mr-2 group-hover:translate-x-1 transition-transform duration-200">▹</span>
+                                    <span className="text-secondary group-hover:text-white-custom transition-colors duration-200">{tech}</span>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="pt-4 border-t border-lightest-navy">
+                            <p className="text-secondary text-sm mb-3">Additional expertise includes:</p>
+                            <div className="flex flex-wrap gap-2">
+                                {additionalSkills.map((skill, index) => (
+                                    <span
+                                        key={index}
+                                        className="px-3 py-1 text-xs font-mono bg-lightest-navy/30 text-accent rounded-full border border-accent/20 hover:border-accent/50 transition-colors duration-200"
+                                    >
+                                        {skill}
+                                    </span>
+                                ))}
                             </div>
-                            <div className="flex items-center">
-                                <span className="text-accent mr-2">▹</span>
-                                <span className="text-secondary">TypeScript</span>
+                        </div>
+
+                        <div className="grid grid-cols-3 gap-4 pt-6 border-t border-lightest-navy">
+                            <div className="text-center">
+                                <div className="text-2xl font-bold text-accent font-mono">17M+</div>
+                                <div className="text-xs text-secondary">Records Managed</div>
                             </div>
-                            <div className="flex items-center">
-                                <span className="text-accent mr-2">▹</span>
-                                <span className="text-secondary">React</span>
+                            <div className="text-center">
+                                <div className="text-2xl font-bold text-accent font-mono">5+</div>
+                                <div className="text-xs text-secondary">Years Experience</div>
                             </div>
-                            <div className="flex items-center">
-                                <span className="text-accent mr-2">▹</span>
-                                <span className="text-secondary">Eleventy</span>
-                            </div>
-                            <div className="flex items-center">
-                                <span className="text-accent mr-2">▹</span>
-                                <span className="text-secondary">Node.js</span>
-                            </div>
-                            <div className="flex items-center">
-                                <span className="text-accent mr-2">▹</span>
-                                <span className="text-secondary">WordPress</span>
+                            <div className="text-center">
+                                <div className="text-2xl font-bold text-accent font-mono">10+</div>
+                                <div className="text-xs text-secondary">Major Projects</div>
                             </div>
                         </div>
                     </div>
 
-                    <div className="relative">
-                        <div className="w-64 h-64 mx-auto relative">
-                            <div
-                                className="absolute inset-0 rounded border-2 translate-x-4 translate-y-4 z-0"
-                                style={{ borderColor: "var(--green)" }}
-                            ></div>
-                            <div className="relative z-10 w-full h-full rounded overflow-hidden">
-                                <Image
-                                    src={profile.avatar_url || 'https://github.com/github.png'}
-                                    alt={profile.name || profile.login || 'McLean Kasambala'}
-                                    className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-300"
-                                    loading="lazy"
-                                    width={100}
-                                    height={100}
+                    <div className="relative pt-20">
+                        <div className="w-64 h-64 mx-auto relative group">
+                            <div className="absolute inset-0 rounded">
+                                <div
+                                    className="absolute inset-0 rounded border-2 translate-x-4 translate-y-4 z-0 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform duration-300"
+                                    style={{ borderColor: "var(--green)" }}
                                 />
+
                             </div>
+
+                            <div className="relative z-10 w-full h-full rounded overflow-hidden bg-accent/10">
+                                {!imageLoaded && (
+                                    <div className="absolute inset-0 bg-lightest-navy animate-pulse flex items-center justify-center">
+                                        <div className="w-16 h-16 border-2 border-accent/30 border-t-accent rounded-full animate-spin" />
+                                    </div>
+                                )}
+                                <Image
+                                    src={profile.avatar_url || '/images/profile-placeholder.jpg'}
+                                    alt={profile.name || profile.login || 'McLean Kasambala'}
+                                    className={`w-full h-full object-cover transition-all duration-500 ${imageLoaded ? 'sepia saturate-200 hue-rotate-180 contrast-110 brightness-95 group-hover:sepia-0 group-hover:saturate-100 group-hover:hue-rotate-0 group-hover:contrast-100 group-hover:brightness-100 opacity-100' : 'opacity-0'
+                                        } group-hover:scale-105`}
+                                    loading="lazy"
+                                    width={256}
+                                    height={256}
+                                    onLoad={() => setImageLoaded(true)}
+                                    onError={() => setImageLoaded(true)}
+                                />
+
+                                <div className="absolute inset-0 bg-cyan-700/20 mix-blend-overlay group-hover:bg-transparent transition-all duration-300" />
+                            </div>
+
+                            <div className="absolute -top-4 -right-4 w-8 h-8 border border-accent/50 rounded transform rotate-45 group-hover:rotate-90 transition-transform duration-500" />
+                            <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-accent/30 rounded-full group-hover:scale-125 transition-transform duration-300" />
+                        </div>
+
+                        <div className="text-center mt-6">
+                            <p className="text-sm text-secondary font-mono">
+                                📍 Based in <span className="text-accent"> Lilongwe, Malawi</span>
+                            </p>
+                            <p className="text-xs text-secondary/70 mt-1">
+                                Building solutions across Africa
+                            </p>
                         </div>
                     </div>
                 </div>

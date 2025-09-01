@@ -9,7 +9,7 @@ export default function Page() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const DEFAULT_USERNAME = process.env.NEXT_PUBLIC_GITHUB_USERNAME || "octocat";
+  const DEFAULT_USERNAME = process.env.NEXT_PUBLIC_GITHUB_USERNAME || "mcleanka";
   const targetUsername = DEFAULT_USERNAME;
 
   async function fetchGitHubProfile(githubUsername: string): Promise<Profile> {

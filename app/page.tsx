@@ -1,7 +1,7 @@
 import { sanitizeProfile } from "@/lib/utils";
 import HomeClient from "@/components/pages/HomeClient";
 
-export const dynamic = 'force-dynamic';
+// export const dynamic = 'force-dynamic';
 
 async function fetchGitHubProfile(): Promise<Profile> {
   try {
